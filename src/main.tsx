@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client'
 import { App } from './App'
 
 //STYLES
-import GlobalStyle from './globalStyle'
+import GlobalStyle from './styles/globalStyle'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
