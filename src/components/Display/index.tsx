@@ -1,9 +1,13 @@
-import { Displays } from './styles';
+import { SetStateAction } from 'react';
+import { DisplayContainer } from './styles';
 
-export function Display (): JSX.Element {
+interface IInput {
+  value: string
+}
+export function Display ({value}: IInput): JSX.Element {
   return (
-    <div>
-
-    </div>
+    <DisplayContainer>
+      <input disabled value={value}/>
+    </DisplayContainer>
   )
 }

@@ -1,9 +1,14 @@
-import { Buttons } from './styles';
+import { Dispatch, MouseEventHandler, SetStateAction } from 'react';
+import { ButtonContainer } from './styles';
 
-export function Button (): JSX.Element {
+interface IButton {
+  title: string
+  onClick: MouseEventHandler<HTMLButtonElement>
+}
+export function Button (props: IButton): JSX.Element {
   return (
-    <div>
-
-    </div>
+    <ButtonContainer onClick={props.onClick}>
+      {props.title}
+    </ButtonContainer>
   )
 }
