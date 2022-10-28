@@ -1,4 +1,3 @@
-import { SetStateAction } from 'react';
 import { DisplayContainer } from './styles';
 
 interface IInput {
