@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { ButtonContainer } from './styles';
+import { ButtonContainer, Img } from './styles';
 
 interface IButton {
   title?: string
@@ -10,7 +10,7 @@ export function Button (props: IButton): JSX.Element {
   return (
     <ButtonContainer onClick={props.onClick}>
       {props.title}
-      <img src={props.image} />
+      <Img src={props.image} />
     </ButtonContainer>
   )
 }
