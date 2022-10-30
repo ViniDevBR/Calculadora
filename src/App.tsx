@@ -13,23 +13,27 @@ export function App(): JSX.Element {
   const [firstNumber, setFirstNumber] = useState<string>('0')
   const [operation, setOperation] = useState<string>('')
 
+
   const handleAddNumber = (number: string) =>{
     setCurrentNumber(prev => `${prev === '0' ? '' : prev}${number}`)
   }
-  const clearDisplay = () => {
+  const handleClearDisplay = () => {
     setCurrentNumber('0')
     setFirstNumber('0')
     setOperation('')
   }
-  const eraseNumber = () => {
+  const handleEraseNumber = () => {
     
     if (currentNumber !=='0'){
       const remove = currentNumber.slice(0, -1)
-
       setCurrentNumber(remove)
     }
+    if (currentNumber.length === 1) {
+      const replaceNumber = currentNumber.replace(currentNumber[0],'0')
+      setCurrentNumber(replaceNumber)
+    }
   }
-  const addNumber = () => {
+  const handleSumNumber = () => {
     
     if(firstNumber === '0'){
       setFirstNumber(currentNumber)
@@ -44,7 +48,7 @@ export function App(): JSX.Element {
       setOperation('')
      }
   }
-  const MinusNumber = () => {
+  const handleMinusNumber = () => {
     if(firstNumber === '0'){
       setFirstNumber(currentNumber)
       setCurrentNumber('0')
@@ -58,7 +62,7 @@ export function App(): JSX.Element {
       setOperation('')
      }
   }
-  const DivNumber = () => {
+  const handleDivNumber = () => {
     if(firstNumber === '0'){
       setFirstNumber(currentNumber)
       setCurrentNumber('0')
@@ -66,13 +70,14 @@ export function App(): JSX.Element {
     } 
      else {
       function sub() {
-        return Number(firstNumber) / Number(currentNumber) 
+        const calculate = Number(firstNumber) / Number(currentNumber)
+        return calculate.toFixed(3)
       }
       setCurrentNumber(String(sub()))
       setOperation('')
      }
   }
-  const MultNumber = () => {
+  const handleMultNumber = () => {
     if(firstNumber === '0'){
       setFirstNumber(currentNumber)
       setCurrentNumber('0')
@@ -86,19 +91,22 @@ export function App(): JSX.Element {
       setOperation('')
      }
   }
-  const PercentageNumber = () => {
+  const handlePercentageNumber = () => {
     if(firstNumber === '0'){
       setFirstNumber(currentNumber)
       setCurrentNumber('0')
+      setOperation('%')
     } 
      else {
-      function sub() {
-        return Number(firstNumber) * Number(currentNumber) 
+      function percentage() {
+        const calculate = (Number(firstNumber)/100) * Number(currentNumber)
+        return calculate
       }
-      setCurrentNumber(String(sub()))
+      setCurrentNumber(String(percentage()))
+      setOperation('')
      }
   }
-  const ChangeSignalNumber = () => {
+  const handleSignalNumber = () => {
     if(currentNumber !== '0')
       setCurrentNumber(prev => `${prev.includes('-') ? prev.slice(1) : '-'+prev}`)
   }
@@ -106,52 +114,57 @@ export function App(): JSX.Element {
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
       switch(operation){
         case '+':
-          addNumber()
+          handleSumNumber()
             break
         case '-':
-          MinusNumber()
+          handleMinusNumber()
             break
         case '/':
-          DivNumber()
+          handleDivNumber()
             break
         case '*':
-          MultNumber()
+          handleMultNumber()
             break
-      }
+        case '%':
+          handlePercentageNumber()
+            break
+     }
     } 
   }
+  
+  
   return (
     <Container>
       <Content>
         <Display value={currentNumber} />
         <Row>
-          <Button onClick={clearDisplay} title='AC'/>
-          <Button onClick={ChangeSignalNumber} title='&#177;' />
-          <Button onClick={PercentageNumber} title='%'/>
-          <Button onClick={DivNumber} title='÷'/>
+          <Button onClick={handleClearDisplay} title='AC'/>
+          <Button onClick={handleSignalNumber} title='&#177;' />
+          <Button onClick={handlePercentageNumber} title='%'/>
+          <Button onClick={handleDivNumber} title='÷'/>
         </Row>
         <Row>
           <Button onClick={() => handleAddNumber('7')} title='7'/>
           <Button onClick={() => handleAddNumber('8')} title='8'/>
           <Button onClick={() => handleAddNumber('9')} title='9'/>
-          <Button onClick={MultNumber} title='x'/>
+          <Button onClick={handleMultNumber} title='x'/>
         </Row>
         <Row>
           <Button onClick={() => handleAddNumber('4')} title='4'/>
           <Button onClick={() => handleAddNumber('5')} title='5'/>
           <Button onClick={() => handleAddNumber('6')} title='6'/>
-          <Button onClick={MinusNumber} title='-'/>
+          <Button onClick={handleMinusNumber} title='-'/>
         </Row>
         <Row>
           <Button onClick={() => handleAddNumber('1')} title='1'/>
           <Button onClick={() => handleAddNumber('2')} title='2'/>
           <Button onClick={() => handleAddNumber('3')} title='3'/>
-          <Button onClick={addNumber} title='+'/>
+          <Button onClick={handleSumNumber} title='+'/>
         </Row>
         <Row>
           <Button onClick={() => handleAddNumber('0')} title='0'/>
           <Button onClick={() => handleAddNumber('.')} title='.'/>
-          <Button onClick={eraseNumber} image='/backspace.svg'/>
+          <Button onClick={handleEraseNumber} image='/backspace.svg'/>
           <Button onClick={handleEquals} title='='/>
         </Row>
       </Content>
