@@ -132,41 +132,41 @@ export function App(): JSX.Element {
       }
     }
   }
-  
+
   
   return (
     <Container>
       <Content>
         <Display value={currentNumber} />
         <Row>
-          <Button color='#FFFFFF' onClick={handleClearDisplay} title='AC'/>
-          <Button color='#FFFFFF' onClick={handleSignalNumber} title='&#177;' />
-          <Button color='#FFFFFF' onClick={handlePercentageNumber} title='%'/>
-          <Button color='#CD6FEE' onClick={handleDivNumber} title='÷'/>
+          <Button onClick={handleClearDisplay} title='AC'/>
+          <Button onClick={handleSignalNumber} image='/plus-minus.svg' />
+          <Button onClick={handlePercentageNumber}image='/percent.svg'/>
+          <Button color='tertiary' font={false} onClick={handleDivNumber} title='÷'/>
         </Row>
         <Row>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('7')} title='7'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('8')} title='8'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('9')} title='9'/>
-          <Button color='#CD6FEE' onClick={handleMultNumber} title='x'/>
+          <Button color='secondary' onClick={() => handleAddNumber('7')} title='7'/>
+          <Button color='secondary' onClick={() => handleAddNumber('8')} title='8'/>
+          <Button color='secondary' onClick={() => handleAddNumber('9')} title='9'/>
+          <Button color='tertiary' onClick={handleMultNumber} title='x'/>
         </Row>
         <Row>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('4')} title='4'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('5')} title='5'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('6')} title='6'/>
-          <Button color='#CD6FEE' onClick={handleMinusNumber} title='-'/>
+          <Button color='secondary' onClick={() => handleAddNumber('4')} title='4'/>
+          <Button color='secondary' onClick={() => handleAddNumber('5')} title='5'/>
+          <Button color='secondary' onClick={() => handleAddNumber('6')} title='6'/>
+          <Button color='secondary' onClick={handleMinusNumber} image='/minus.svg'/>
         </Row>
         <Row>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('1')} title='1'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('2')} title='2'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('3')} title='3'/>
-          <Button color='#CD6FEE' onClick={handleSumNumber} title='+'/>
+          <Button color='secondary' onClick={() => handleAddNumber('1')} title='1'/>
+          <Button color='secondary' onClick={() => handleAddNumber('2')} title='2'/>
+          <Button color='secondary' onClick={() => handleAddNumber('3')} title='3'/>
+          <Button  onClick={handleSumNumber} image='/plus.svg'/>
         </Row>
         <Row>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('0')} title='0'/>
-          <Button color='#ADA8AC' onClick={() => handleAddNumber('.')} title='.'/>
-          <Button color='#ADA8AC' onClick={handleEraseNumber} image='/backspace.svg'/>
-          <Button color='#CD6FEE' onClick={handleEquals} title='='/>
+          <Button color='secondary' onClick={() => handleAddNumber('0')} title='0'/>
+          <Button color='secondary' onClick={() => handleAddNumber('.')} title='.'/>
+          <Button color='secondary' onClick={handleEraseNumber} image='/backspace.svg'/>
+          <Button font={false} onClick={handleEquals} bgColor={true} title='='/>
         </Row>
       </Content>
     </Container>
