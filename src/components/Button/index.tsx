@@ -5,13 +5,16 @@ interface IButton {
   title?: string
   onClick: MouseEventHandler<HTMLButtonElement>
   image?: string
-  color: string
+  bgColor?: boolean
+  font?: boolean
+  color?: string
 }
-export function Button (props: IButton): JSX.Element {
+
+export function Button ({color='primary', font=true, bgColor=false, ...props}: IButton): JSX.Element {
+  
   return (
-    <ButtonContainer color={props.color} onClick={props.onClick}>
-      {props.title}
-      <Img src={props.image} />
+    <ButtonContainer bgColor={bgColor} color={color} font={font} onClick={props.onClick}>
+      {props.title || <Img src={props.image} />}
     </ButtonContainer>
   )
 }
