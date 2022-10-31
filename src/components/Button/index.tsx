@@ -5,10 +5,11 @@ interface IButton {
   title?: string
   onClick: MouseEventHandler<HTMLButtonElement>
   image?: string
+  color: string
 }
 export function Button (props: IButton): JSX.Element {
   return (
-    <ButtonContainer onClick={props.onClick}>
+    <ButtonContainer color={props.color} onClick={props.onClick}>
       {props.title}
       <Img src={props.image} />
     </ButtonContainer>
