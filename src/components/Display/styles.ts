@@ -1,23 +1,25 @@
 import styled from "styled-components";
 
-export const DisplayContainer = styled.div`
+type TDisplay = {
+  displayType: 'result' | 'expression'
+}
+
+export const DisplayContainer = styled.div<TDisplay>`
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  font-size: 4rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 
   input {
     width: 100%;
     border: none;
+    outline: none;
     border-radius: 1rem;
     background-color: transparent;
-    font-size: 4rem;
+    font-size: ${({displayType}) => displayType === 'result' ? 3 : 4}rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: ${({displayType}) => displayType === 'result' ? '#A0A0A0' : '#FFFFFF'};
     text-align: end;
     text-shadow: 2px 2px 2px #000;
   }

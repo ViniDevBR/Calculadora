@@ -18,7 +18,7 @@ export const ButtonContainer = styled.button<IButton>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: 1rem;
+  padding-block: 1.5rem;
   border-radius: 1rem;
   background-color: transparent;
   ${props => props.bgColor === true && css`
@@ -41,5 +41,5 @@ export const ButtonContainer = styled.button<IButton>`
 `
 
 export const Img = styled.img`
-  width: 40px;
+  width: 35px;
 `

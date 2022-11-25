@@ -1,12 +1,13 @@
+import { InputHTMLAttributes } from 'react';
 import { DisplayContainer } from './styles';
 
-interface IInput {
-  value: string
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  displayType?: 'result' | 'expression'
 }
-export function Display (props: IInput): JSX.Element {
+export function Display ({displayType = 'expression', ...props}: IInput): JSX.Element {
   return (
-    <DisplayContainer>
-      <input disabled value={props.value}/>
+    <DisplayContainer displayType={displayType}>
+      <input {...props}/>
     </DisplayContainer>
   )
 }
