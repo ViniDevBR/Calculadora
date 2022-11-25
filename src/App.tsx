@@ -77,18 +77,18 @@ export function App(): JSX.Element {
           <Button color='secondary' onClick={() => handleAddNumber('4')} title='4'/>
           <Button color='secondary' onClick={() => handleAddNumber('5')} title='5'/>
           <Button color='secondary' onClick={() => handleAddNumber('6')} title='6'/>
-          <Button color='secondary' onClick={() => signalOperation('-')} image='./assets/minus.svg'/>
+          <Button color='secondary' onClick={() => signalOperation('-')} image='./assets/minus.svg' alt='SUBTRAIR'/>
         </Row>
         <Row>
           <Button color='secondary' onClick={() => handleAddNumber('1')} title='1'/>
           <Button color='secondary' onClick={() => handleAddNumber('2')} title='2'/>
           <Button color='secondary' onClick={() => handleAddNumber('3')} title='3'/>
-          <Button onClick={() => signalOperation('+')} image='./assets/plus.svg'/>
+          <Button onClick={() => signalOperation('+')} image='./assets/plus.svg' alt='SOMAR'/>
         </Row>
         <Row>
           <Button color='secondary' onClick={() => handleAddNumber('0')} title='0'/>
           <Button color='secondary' onClick={() => signalOperation('.')} title='.'/>
-          <Button color='secondary' onClick={handleEraseNumber} image='./assets/backspace.svg'/>
+          <Button color='secondary' onClick={handleEraseNumber} image='./assets/backspace.svg' alt='RESULTADO'/>
           <Button font={false} onClick={resultado} bgColor={true} title='='/>
         </Row>
       </Content>
